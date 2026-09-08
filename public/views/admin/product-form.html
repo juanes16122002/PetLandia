@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Producto | PetLandia Admin</title>
+  <link rel="stylesheet" href="../../assets/css/reset.css">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/admin.css">
+</head>
+<body class="admin-body">
+  <header class="admin-header">
+    <div class="admin-topbar">
+      <a href="dashboard.html" class="admin-brand">Pet<span>Landia</span><em>Admin</em></a>
+      <nav class="admin-nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="orders.html">Pedidos</a>
+        <a href="products.html" class="active">Productos</a>
+        <a href="inventory.html">Inventario</a>
+      </nav>
+      <div class="admin-user">
+        <span class="admin-user-name">
+          <span id="admin-user-name"></span>
+          <span class="admin-user-role" id="admin-user-role"></span>
+        </span>
+        <a href="../home.html" class="btn btn-ghost">Ver tienda</a>
+        <button class="btn btn-outline" id="admin-logout" type="button">Salir</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <div id="admin-error"></div>
+
+    <h1 class="page-title" id="form-title">Nuevo producto</h1>
+    <p class="page-subtitle" id="form-subtitle">Completa los datos del producto.</p>
+
+    <form class="card admin-form" id="product-form">
+      <input type="hidden" id="product-id">
+
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" class="form-control" maxlength="120">
+        <div class="field-error" id="err-nombre" hidden></div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="categoria_id">Categoría</label>
+          <select id="categoria_id" class="form-control"></select>
+          <div class="field-error" id="err-categoria_id" hidden></div>
+        </div>
+        <div class="form-group">
+          <label for="precio">Precio (CLP)</label>
+          <input type="number" id="precio" class="form-control" min="0" step="0.01">
+          <div class="field-error" id="err-precio" hidden></div>
+        </div>
+        <div class="form-group">
+          <label for="sku">SKU</label>
+          <input type="text" id="sku" class="form-control" maxlength="30">
+          <div class="field-error" id="err-sku" hidden></div>
+        </div>
+        <div class="form-group">
+          <label for="stock">Stock</label>
+          <input type="number" id="stock" class="form-control" min="0">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" class="form-control" maxlength="500"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="imagen">Imagen (nombre de archivo)</label>
+        <input type="text" id="imagen" class="form-control" placeholder="p.ej. alimento_perro.jpg">
+        <p class="form-hint">La imagen debe existir en la carpeta <code>uploads/products/</code>.</p>
+      </div>
+
+      <div class="form-check">
+        <label><input type="checkbox" id="disponible" checked> Disponible</label>
+        <label><input type="checkbox" id="activo" checked> Activo</label>
+      </div>
+
+      <div class="alert alert-error" id="form-error" hidden></div>
+
+      <div class="form-actions">
+        <button class="btn btn-primary" id="save-btn" type="submit">Guardar producto</button>
+        <a href="products.html" class="btn btn-ghost">Cancelar</a>
+      </div>
+    </form>
+  </main>
+
+  <footer class="admin-footer">© 2026 PetLandia · Panel de administración</footer>
+
+  <script src="../../assets/js/app.js"></script>
+  <script src="../../assets/js/admin.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', () => ProductForm.init());</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos | PetLandia Admin</title>
+  <link rel="stylesheet" href="../../assets/css/reset.css">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/admin.css">
+</head>
+<body class="admin-body">
+  <header class="admin-header">
+    <div class="admin-topbar">
+      <a href="dashboard.html" class="admin-brand">Pet<span>Landia</span><em>Admin</em></a>
+      <nav class="admin-nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="orders.html">Pedidos</a>
+        <a href="products.html" class="active">Productos</a>
+        <a href="inventory.html">Inventario</a>
+      </nav>
+      <div class="admin-user">
+        <span class="admin-user-name">
+          <span id="admin-user-name"></span>
+          <span class="admin-user-role" id="admin-user-role"></span>
+        </span>
+        <a href="../home.html" class="btn btn-ghost">Ver tienda</a>
+        <button class="btn btn-outline" id="admin-logout" type="button">Salir</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <div id="admin-error"></div>
+
+    <h1 class="page-title">Productos</h1>
+    <p class="page-subtitle">Gestiona el catálogo de la tienda.</p>
+
+    <div class="toolbar">
+      <input type="search" id="filter-search" class="form-control grow" placeholder="Buscar por nombre o SKU...">
+      <select id="filter-category" class="form-control">
+        <option value="">Todas las categorías</option>
+      </select>
+      <button class="btn btn-outline" id="filter-apply" type="button">Filtrar</button>
+      <a href="product-form.html" class="btn btn-primary right">+ Nuevo producto</a>
+    </div>
+
+    <div id="products-table"></div>
+    <div id="pagination"></div>
+  </main>
+
+  <footer class="admin-footer">© 2026 PetLandia · Panel de administración</footer>
+
+  <script src="../../assets/js/app.js"></script>
+  <script src="../../assets/js/admin.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', () => AdminProducts.init());</script>
+</body>
+</html>

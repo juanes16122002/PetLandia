@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | PetLandia</title>
+  <link rel="stylesheet" href="../assets/css/reset.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/checkout.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="home.html" class="brand">Pet<span>Landia</span></a>
+      <nav class="main-nav">
+        <a href="catalog.html">Catálogo</a>
+      </nav>
+      <div class="header-actions">
+        <a href="cart.html" class="cart-link">
+          🛒
+          <span class="cart-badge" id="cart-badge"></span>
+        </a>
+        <div id="user-area"></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <h1 class="page-title">Checkout</h1>
+    <div id="error-container"></div>
+    <div id="loader" class="loader"><div class="spinner"></div></div>
+
+    <!-- Paso 1: datos de envío -->
+    <section id="step-shipping" class="card hidden">
+      <h2 class="card-title">Datos de envío</h2>
+      <div class="checkout-layout">
+        <div>
+          <div class="form-group">
+            <label for="direccion_envio">Dirección de envío</label>
+            <input type="text" id="direccion_envio" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="telefono_contacto">Teléfono de contacto</label>
+            <input type="tel" id="telefono_contacto" class="form-control"
+              placeholder="Ej: +56 9 1234 5678" required>
+          </div>
+          <div class="form-group">
+            <label for="observaciones">Observaciones <span class="text-muted">(opcional)</span></label>
+            <textarea id="observaciones" class="form-control" rows="3"></textarea>
+          </div>
+          <button class="btn btn-primary" id="create-order-btn">Crear pedido</button>
+        </div>
+        <aside class="card summary">
+          <h3>Resumen</h3>
+          <div id="shipping-summary"></div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Paso 2: pago simulado -->
+    <section id="step-payment" class="card hidden">
+      <h2 class="card-title">Pago del pedido #<span id="order-number"></span></h2>
+      <div id="test-cards" class="test-cards"></div>
+
+      <form id="payment-form" novalidate>
+        <div class="form-group">
+          <label for="card_number">Número de tarjeta</label>
+          <input type="text" id="card_number" class="form-control"
+            placeholder="4111 1111 1111 1111" required>
+        </div>
+        <div class="form-group">
+          <label for="card_holder">Titular</label>
+          <input type="text" id="card_holder" class="form-control" required>
+        </div>
+        <div class="grid-3" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">
+          <div class="form-group">
+            <label for="expiry">Vencimiento (MM/YY)</label>
+            <input type="text" id="expiry" class="form-control" placeholder="12/28" required>
+          </div>
+          <div class="form-group">
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" class="form-control" placeholder="123" required>
+          </div>
+          <div class="form-group">
+            <label>Tipo</label>
+            <input type="text" id="card_type" class="form-control" value="Visa" readonly>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" id="pay-btn">Pagar</button>
+      </form>
+    </section>
+
+    <!-- Paso 3: resultado -->
+    <section id="step-result" class="card hidden"></section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© 2026 PetLandia</span>
+      <span>🧡 Productos para mascotas</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/app.js"></script>
+  <script src="../assets/js/checkout.js"></script>
+</body>
+</html>

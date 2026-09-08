@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis pedidos | PetLandia</title>
+  <link rel="stylesheet" href="../assets/css/reset.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="home.html" class="brand">Pet<span>Landia</span></a>
+      <nav class="main-nav">
+        <a href="catalog.html">Catálogo</a>
+      </nav>
+      <div class="header-actions">
+        <a href="cart.html" class="cart-link">
+          🛒
+          <span class="cart-badge" id="cart-badge"></span>
+        </a>
+        <div id="user-area"></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <h1 class="page-title">Mis pedidos</h1>
+    <div id="error-container"></div>
+    <div id="loader" class="loader"><div class="spinner"></div></div>
+    <div id="orders-content"></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© 2026 PetLandia</span>
+      <span>🧡 Productos para mascotas</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const user = await APP.requireLogin();
+      if (!user) return;
+
+      const loader = document.getElementById('loader');
+      const box = document.getElementById('orders-content');
+      const errBox = document.getElementById('error-container');
+
+      try {
+        const data = await APP.request('orders.php?action=my-orders');
+        const orders = data.data.orders;
+
+        if (!orders.length) {
+          box.innerHTML = `
+            <div class="empty-state">
+              <div class="icon">📦</div>
+              <p>Aún no tienes pedidos.</p>
+              <a href="catalog.html" class="btn btn-primary" style="margin-top:16px;">Ver catálogo</a>
+            </div>`;
+          return;
+        }
+
+        box.innerHTML = `
+          <div class="card">
+            <table class="table">
+              <thead>
+                <tr><th>#</th><th>Fecha</th><th>Subtotal</th><th>Total</th><th>Estado</th></tr>
+              </thead>
+              <tbody>
+                ${orders.map((o) => `
+                  <tr>
+                    <td>#${o.id}</td>
+                    <td>${APP.formatDate(o.created_at)}</td>
+                    <td>${APP.formatPrice(o.subtotal)}</td>
+                    <td><strong>${APP.formatPrice(o.total)}</strong></td>
+                    <td>${APP.estadoBadge(o.estado)}</td>
+                  </tr>`).join('')}
+              </tbody>
+            </table>
+          </div>`;
+      } catch (e) {
+        if (e.status === 401) { window.location.href = 'login.html'; return; }
+        APP.showAlert(errBox, e.message);
+      } finally {
+        loader.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>

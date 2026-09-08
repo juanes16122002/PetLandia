@@ -1,0 +1,242 @@
+/* ============================================================
+   PETLANDIA - Estilos del home (carruseles)
+   ============================================================ */
+
+/* ---------- Banner / hero carrusel (rectangular) ---------- */
+.banner {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  margin-bottom: 40px;
+}
+
+.banner-viewport {
+  overflow: hidden;
+}
+
+.banner-carousel {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+
+.banner-slide {
+  flex: 0 0 100%;
+  min-height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 60px;
+  text-align: center;
+  color: #fff;
+}
+
+.banner-slide h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.banner-slide p {
+  font-size: 1.05rem;
+  opacity: 0.95;
+  margin-bottom: 18px;
+}
+
+.banner-slide .btn {
+  background: #fff;
+  color: var(--color-primary-dark);
+}
+
+.banner-slide .btn:hover {
+  background: #f2f0e8;
+}
+
+/* Variantes de color del banner */
+.banner-slide.v1 { background: linear-gradient(135deg, #2f8f6b, #57bf8f); }
+.banner-slide.v2 { background: linear-gradient(135deg, #e8794f, #f4a14f); }
+.banner-slide.v3 { background: linear-gradient(135deg, #5b6ee1, #8f9bff); }
+
+/* Controles del banner */
+.banner-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--color-primary-dark);
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  box-shadow: var(--shadow);
+}
+
+.banner-btn:hover { background: #fff; }
+.banner-prev { left: 12px; }
+.banner-next { right: 12px; }
+
+.banner-dots {
+  position: absolute;
+  bottom: 14px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  z-index: 2;
+}
+
+.banner-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.banner-dots .dot.active {
+  background: #fff;
+  transform: scale(1.3);
+}
+
+/* ---------- Carrusel de productos ---------- */
+.featured {
+  margin-top: 8px;
+}
+
+.featured-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.featured-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+}
+
+.pc-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.pc-controls button {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: #fff;
+  color: var(--color-text);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pc-controls button:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.pc-controls button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.pc-viewport {
+  overflow: hidden;
+}
+
+.pc-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+}
+
+.pc-track::-webkit-scrollbar { display: none; }
+
+.pc-card {
+  flex: 0 0 220px;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.pc-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.pc-card.sold-out { opacity: 0.65; }
+
+.pc-thumb {
+  height: 150px;
+  background: #f0f2ec;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.4rem;
+  overflow: hidden;
+}
+
+.pc-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pc-body {
+  padding: 12px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pc-category {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.pc-name {
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--color-text);
+  line-height: 1.25;
+  min-height: 2.3em;
+}
+
+.pc-name:hover { color: var(--color-primary); }
+
+.pc-price {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+}
+
+.pc-view {
+  margin-top: 4px;
+  padding: 7px;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* Miniatura hidratada en pantallas pequeñas */
+@media (max-width: 600px) {
+  .pc-card { flex: 0 0 170px; }
+  .banner-slide { min-height: 190px; padding: 30px 40px; }
+  .banner-slide h2 { font-size: 1.5rem; }
+}

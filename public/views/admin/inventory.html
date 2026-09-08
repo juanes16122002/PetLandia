@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventario | PetLandia Admin</title>
+  <link rel="stylesheet" href="../../assets/css/reset.css">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/admin.css">
+</head>
+<body class="admin-body">
+  <header class="admin-header">
+    <div class="admin-topbar">
+      <a href="dashboard.html" class="admin-brand">Pet<span>Landia</span><em>Admin</em></a>
+      <nav class="admin-nav">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="orders.html">Pedidos</a>
+        <a href="products.html">Productos</a>
+        <a href="inventory.html" class="active">Inventario</a>
+      </nav>
+      <div class="admin-user">
+        <span class="admin-user-name">
+          <span id="admin-user-name"></span>
+          <span class="admin-user-role" id="admin-user-role"></span>
+        </span>
+        <a href="../home.html" class="btn btn-ghost">Ver tienda</a>
+        <button class="btn btn-outline" id="admin-logout" type="button">Salir</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <div id="admin-error"></div>
+
+    <h1 class="page-title">Inventario</h1>
+    <p class="page-subtitle">Actualiza el stock de los productos. Disponible para los roles Administrador e Inventario.</p>
+
+    <div class="toolbar">
+      <input type="search" id="inv-search" class="form-control grow" placeholder="Buscar por nombre o SKU...">
+      <button class="btn btn-outline" id="inv-filter" type="button">Buscar</button>
+      <div class="right">
+        <button class="btn btn-ghost" id="inv-reload" type="button">Recargar</button>
+      </div>
+    </div>
+
+    <div id="inv-info"></div>
+    <div class="card table-card" id="inv-table"></div>
+    <div id="inv-pagination"></div>
+  </main>
+
+  <footer class="admin-footer">© 2026 PetLandia · Panel de administración</footer>
+
+  <script src="../../assets/js/app.js"></script>
+  <script src="../../assets/js/admin.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', () => Inventory.init());</script>
+</body>
+</html>

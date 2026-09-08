@@ -1,0 +1,67 @@
+/* Estilos del checkout de PetLandia */
+
+.checkout-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 800px) {
+  .checkout-layout { grid-template-columns: 1fr; }
+}
+
+.checkout-layout .summary h3 {
+  font-size: 1.05rem;
+  margin-bottom: 12px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  color: var(--color-text-muted);
+}
+
+.summary-row.total {
+  border-top: 1px solid var(--color-border);
+  margin-top: 8px;
+  padding-top: 12px;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+/* ---------- Tarjetas de prueba ---------- */
+.test-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.test-card {
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: #f7f9f3;
+  text-align: left;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.test-card:hover {
+  border-color: var(--color-primary);
+  background: #eef3e5;
+}
+
+.test-card em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+}
+
+/* ---------- Resultado ---------- */
+.result-details {
+  margin: 20px auto 0;
+  max-width: 360px;
+  text-align: left;
+}

@@ -1,0 +1,406 @@
+/* ============================================================
+   PETLANDIA - Estilos del panel administrativo
+   ============================================================ */
+
+.admin-body {
+  background: #f0f2ec;
+}
+
+/* ---------- Cabecera ---------- */
+.admin-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.admin-topbar {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.admin-brand {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+
+.admin-brand span {
+  color: var(--color-primary);
+}
+
+.admin-brand em {
+  font-style: normal;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--color-primary);
+  border-radius: 999px;
+  padding: 3px 8px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.admin-nav {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+}
+
+.admin-nav a {
+  color: var(--color-text-muted);
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 9px 14px;
+  border-radius: 8px;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.admin-nav a:hover {
+  color: var(--color-primary-dark);
+  background: var(--color-bg);
+}
+
+.admin-nav a.active {
+  color: #fff;
+  background: var(--color-primary);
+}
+
+.admin-user {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-user-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.admin-user-role {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  display: block;
+  text-align: right;
+}
+
+/* ---------- Contenido ---------- */
+.admin-main {
+  flex: 1;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 28px 24px 64px;
+}
+
+/* Contenido oculto cuando se deniega el acceso */
+.admin-main.denied > *:not(#admin-error) {
+  display: none;
+}
+
+.admin-cols {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 992px) {
+  .admin-cols { grid-template-columns: 1fr; }
+}
+
+/* ---------- Tarjetas de estadísticas ---------- */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.stat-grid .stat-card:first-child {
+  grid-column: span 2;
+}
+
+@media (max-width: 900px) {
+  .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-grid .stat-card:first-child { grid-column: span 2; }
+}
+
+@media (max-width: 560px) {
+  .stat-grid { grid-template-columns: 1fr; }
+  .stat-grid .stat-card:first-child { grid-column: span 1; }
+}
+
+.stat-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.stat-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  flex-shrink: 0;
+  background: #eef3e3;
+}
+
+.stat-card.tone-success .stat-icon { background: #eafaf0; }
+.stat-card.tone-warning .stat-icon { background: #fdf3e7; }
+.stat-card.tone-danger  .stat-icon { background: #fdecea; }
+
+.stat-label {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.stat-value {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1.1;
+  margin-top: 2px;
+}
+
+.stat-card.tone-success .stat-value { color: var(--color-success); }
+.stat-card.tone-warning .stat-value { color: var(--color-warning); }
+.stat-card.tone-danger  .stat-value { color: var(--color-danger); }
+
+/* ---------- Toolbar / filtros ---------- */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.toolbar .form-control {
+  width: auto;
+  min-width: 180px;
+}
+
+.toolbar .grow {
+  flex: 1;
+  min-width: 220px;
+}
+
+.toolbar .right {
+  margin-left: auto;
+}
+
+/* ---------- Tablas del panel ---------- */
+.table-card {
+  padding: 8px 12px;
+  overflow-x: auto;
+}
+
+.table th {
+  color: var(--color-text-muted);
+}
+
+.table td .avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #f0f2ec;
+  display: block;
+}
+
+.table .num {
+  text-align: right;
+}
+
+.table-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.table-actions .btn {
+  padding: 6px 12px;
+  font-size: 0.83rem;
+}
+
+/* ---------- Badges de stock ---------- */
+.badge-stock-ok    { background: #eafaf0; color: var(--color-success); }
+.badge-stock-low   { background: #fdf3e7; color: var(--color-warning); }
+.badge-stock-out   { background: #fdecea; color: var(--color-danger); }
+
+/* ---------- Input de stock ---------- */
+.stock-input {
+  width: 84px;
+  padding: 7px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  text-align: center;
+  font-weight: 600;
+}
+
+.stock-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(107, 142, 35, 0.15);
+}
+
+/* ---------- Formulario de producto ---------- */
+.admin-form {
+  max-width: 680px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+}
+
+@media (max-width: 640px) {
+  .form-grid { grid-template-columns: 1fr; }
+}
+
+.form-check {
+  display: flex;
+  gap: 24px;
+  margin: 6px 0 18px;
+}
+
+.form-check label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* ---------- Paginación ---------- */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.pagination .btn {
+  min-width: 40px;
+  padding: 8px 12px;
+}
+
+.pagination .btn.current {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+/* ---------- Modal ---------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 16px;
+  z-index: 100;
+  overflow-y: auto;
+}
+
+.modal {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  width: 100%;
+  max-width: 720px;
+  padding: 24px;
+}
+
+.modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.modal-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.modal-close:hover { color: var(--color-danger); }
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 24px;
+  margin-bottom: 16px;
+}
+
+.detail-grid dt {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 2px;
+}
+
+.detail-grid dd {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 600px) {
+  .detail-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- Pie ---------- */
+.admin-footer {
+  background: var(--color-primary-dark);
+  color: var(--color-primary-light);
+  padding: 18px 20px;
+  text-align: center;
+  font-size: 0.85rem;
+}

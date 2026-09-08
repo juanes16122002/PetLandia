@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | PetLandia Admin</title>
+  <link rel="stylesheet" href="../../assets/css/reset.css">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="../../assets/css/admin.css">
+</head>
+<body class="admin-body">
+  <header class="admin-header">
+    <div class="admin-topbar">
+      <a href="dashboard.html" class="admin-brand">Pet<span>Landia</span><em>Admin</em></a>
+      <nav class="admin-nav">
+        <a href="dashboard.html" class="active">Dashboard</a>
+        <a href="orders.html">Pedidos</a>
+        <a href="products.html">Productos</a>
+        <a href="inventory.html">Inventario</a>
+      </nav>
+      <div class="admin-user">
+        <span class="admin-user-name">
+          <span id="admin-user-name"></span>
+          <span class="admin-user-role" id="admin-user-role"></span>
+        </span>
+        <a href="../home.html" class="btn btn-ghost">Ver tienda</a>
+        <button class="btn btn-outline" id="admin-logout" type="button">Salir</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <div id="admin-error"></div>
+
+    <h1 class="page-title">Dashboard</h1>
+    <p class="page-subtitle">Resumen general de la tienda.</p>
+
+    <div id="stat-grid" class="stat-grid"></div>
+
+    <section class="section">
+      <h2 class="card-title">Pedidos recientes</h2>
+      <div class="card table-card" id="recent-orders"></div>
+    </section>
+
+    <div class="admin-cols">
+      <section class="section">
+        <h2 class="card-title">Stock bajo</h2>
+        <div class="card table-card" id="low-stock"></div>
+      </section>
+      <section class="section">
+        <h2 class="card-title">Categorías</h2>
+        <div class="card" id="categories"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="admin-footer">© 2026 PetLandia · Panel de administración</footer>
+
+  <script src="../../assets/js/app.js"></script>
+  <script src="../../assets/js/admin.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', () => Dashboard.init());</script>
+</body>
+</html>

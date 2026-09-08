@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PetLandia | Tienda para mascotas</title>
+  <link rel="stylesheet" href="../assets/css/reset.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/home.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="home.html" class="brand">Pet<span>Landia</span></a>
+      <nav class="main-nav">
+        <a href="catalog.html">Catálogo</a>
+      </nav>
+      <div class="header-actions">
+        <a href="cart.html" class="cart-link">
+          🛒
+          <span class="cart-badge" id="cart-badge"></span>
+        </a>
+        <div id="user-area"></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- ===== Banner / hero carrusel ===== -->
+    <section class="banner" aria-label="Promociones">
+      <div class="banner-viewport">
+        <div class="banner-carousel">
+          <div class="banner-slide v1">
+            <div>
+              <h2>🐾 Todo para tu mascota</h2>
+              <p>Alimentos, juguetes y accesorios al mejor precio.</p>
+              <a href="catalog.html" class="btn">Explorar catálogo</a>
+            </div>
+          </div>
+          <div class="banner-slide v2">
+            <div>
+              <h2>🐶 Para perros felices</h2>
+              <p>Croquetas premium, snacks y juegos para tu mejor amigo.</p>
+              <a href="catalog.html" class="btn">Ver perros</a>
+            </div>
+          </div>
+          <div class="banner-slide v3">
+            <div>
+              <h2>🐱 El mundo de los gatos</h2>
+              <p>Arenas, rascadores y snacks que tus gatos amarán.</p>
+              <a href="catalog.html" class="btn">Ver gatos</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="banner-btn banner-prev" aria-label="Anterior">‹</button>
+      <button class="banner-btn banner-next" aria-label="Siguiente">›</button>
+      <div class="banner-dots"></div>
+    </section>
+
+    <!-- ===== Carrusel de productos destacados ===== -->
+    <section class="featured" aria-label="Productos destacados">
+      <div class="featured-head">
+        <h2 class="featured-title">Productos destacados</h2>
+        <div class="pc-controls">
+          <button id="pc-prev" aria-label="Anterior">‹</button>
+          <button id="pc-next" aria-label="Siguiente">›</button>
+        </div>
+      </div>
+
+      <div class="pc-viewport">
+        <div class="pc-track" id="featured-carousel"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© 2026 PetLandia</span>
+      <span>🧡 Productos para mascotas</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/app.js"></script>
+  <script src="../assets/js/home.js"></script>
+</body>
+</html>
