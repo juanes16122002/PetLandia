@@ -41,9 +41,26 @@ const Checkout = {
   },
 
   renderShippingSummary(cart) {
+    const ivaRate = 0.19;
+    const subtotal = cart.total;
+    const iva = Math.round(subtotal * ivaRate);
+    const total = subtotal + iva;
+
+    let itemsHtml = '';
+    cart.items.forEach((item) => {
+      itemsHtml += `
+        <div class="summary-item">
+          <span class="summary-item-name">${escapeHtml(item.nombre)}</span>
+          <span class="summary-item-detail">${item.cantidad} x ${APP.formatPrice(item.precio)}</span>
+          <span class="summary-item-subtotal">${APP.formatPrice(item.subtotal)}</span>
+        </div>`;
+    });
+
     document.getElementById('shipping-summary').innerHTML = `
-      <div class="summary-row"><span>Productos</span><span>${cart.total_items}</span></div>
-      <div class="summary-row total"><span>Total a pagar</span><span>${APP.formatPrice(cart.total)}</span></div>`;
+      <div class="summary-items">${itemsHtml}</div>
+      <div class="summary-row"><span>Subtotal</span><span>${APP.formatPrice(subtotal)}</span></div>
+      <div class="summary-row"><span>IVA (19%)</span><span>${APP.formatPrice(iva)}</span></div>
+      <div class="summary-row total"><span>Total a pagar</span><span>${APP.formatPrice(total)}</span></div>`;
   },
 
   showStep(id) {
@@ -127,6 +144,10 @@ const Checkout = {
       const approved = payment.status === 'APROBADO';
       const box = document.getElementById('step-result');
 
+      const ivaRate = 0.19;
+      const subtotal = Math.round(payment.amount / (1 + ivaRate));
+      const iva = payment.amount - subtotal;
+
       box.innerHTML = `
         <div class="text-center">
           <div style="font-size:4rem;">${approved ? '✅' : '❌'}</div>
@@ -136,7 +157,9 @@ const Checkout = {
             <div class="summary-row"><span>Pedido</span><span>#${payment.order_id}</span></div>
             <div class="summary-row"><span>Estado</span><span>${APP.estadoBadge(payment.status)}</span></div>
             <div class="summary-row"><span>Tarjeta</span><span>•••• ${escapeHtml(payment.last_four)}</span></div>
-            <div class="summary-row total"><span>Monto</span><span>${APP.formatPrice(payment.amount)}</span></div>
+            <div class="summary-row"><span>Subtotal</span><span>${APP.formatPrice(subtotal)}</span></div>
+            <div class="summary-row"><span>IVA (19%)</span><span>${APP.formatPrice(iva)}</span></div>
+            <div class="summary-row total"><span>Total pagado</span><span>${APP.formatPrice(payment.amount)}</span></div>
           </div>
           <div style="margin-top:20px;display:flex;gap:10px;justify-content:center;">
             <a href="orders.html" class="btn btn-primary">Ver mis pedidos</a>
